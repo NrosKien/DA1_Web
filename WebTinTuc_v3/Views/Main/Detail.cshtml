@@ -1,0 +1,73 @@
+﻿@model WebTinTuc_v3.Models.TINTUC
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<div class="containerin">
+    <!--Tools -> NuGet Package Manager -> Manage NuGet... -> Cài MVCSiteMapProvider.MVC5-->
+    <!--Breadcrumb-->
+    <div class="row">
+        <p>@Html.MvcSiteMap().SiteMapTitle()</p>
+    </div>
+    <div class="row">
+        <!--Main Content-->
+        <div class="col-8">       
+            <table class="table table-border">
+                <thead>
+                    <tr>
+                        <!--Title-->
+                        <th class="h5">
+                            @Html.DisplayFor(model => model.TieuDe)
+                            Tiêu đề
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!--Short Description-->
+                        <td class="h6"><!--Short Description here-->Short Description</td>
+                    </tr>
+                    <tr>
+                        <!--Description or Link File-->
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+                    </tr>
+                    <tr>
+                        <!--Author-->
+                        <td class="h6 text-right">Tác giả</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--Content-->
+        <div class="col-4">           
+        <!--Category-->
+            <p class="h5 rounded bg-dark text-white p-1 my-2">Thể loại</p>
+            <!--RenderBody-->
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action">Thế giới</a>
+                <a class="list-group-item list-group-item-action">Thể thao</a>
+                <a class="list-group-item list-group-item-action">Khoa học</a>
+                <a class="list-group-item list-group-item-action">Chính trị</a>
+            </div>
+            <!--News-->
+            <p class="h5 rounded bg-dark text-white p-1 my-2">Tin tức trong ngày</p>
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+            </div>
+            <!--News-->
+            <p class="h5 rounded bg-dark text-white p-1 my-2">Tin tức</p>
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+                <a class="list-group-item list-group-item-action">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan.</a>
+            </div>
+             
+        </div>
+    </div>
+</div>

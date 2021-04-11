@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebTinTucModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DANGTINTUC">
+    <Key>
+      <PropertyRef Name="MaDangTin" />
+    </Key>
+    <Property Name="MaDangTin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ThoiGianDang" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="Self.FK_DANGTINTUC_TAIKHOAN" FromRole="DANGTINTUC" ToRole="TAIKHOAN" />
+    <NavigationProperty Name="TINTUC" Relationship="Self.FK_DANGTINTUC_TINTUC" FromRole="DANGTINTUC" ToRole="TINTUC" />
+  </EntityType>
+  <EntityType Name="DUYETTIN">
+    <Key>
+      <PropertyRef Name="MaDuyetTin" />
+    </Key>
+    <Property Name="MaDuyetTin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ThoiGianDuyet" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TINTUC" Relationship="Self.FK_DUYETTIN_TINTUC" FromRole="DUYETTIN" ToRole="TINTUC" />
+  </EntityType>
+  <EntityType Name="DUYETTINTUC">
+    <Key>
+      <PropertyRef Name="MaDuyetTin" />
+    </Key>
+    <Property Name="MaDuyetTin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ThoiGianDuyet" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="NgayDuocDang" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="HINH">
+    <Key>
+      <PropertyRef Name="IDHinh" />
+    </Key>
+    <Property Name="IDHinh" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Hinh1" Type="String" MaxLength="70" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TINTUC" Relationship="Self.FK_HINH_TINTUC" FromRole="HINH" ToRole="TINTUC" />
+  </EntityType>
+  <EntityType Name="LOAITIN">
+    <Key>
+      <PropertyRef Name="MaLoaiTin" />
+    </Key>
+    <Property Name="MaLoaiTin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenLoaiTin" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TINTUCs" Relationship="Self.FK_TINTUC_LOAITIN" FromRole="LOAITIN" ToRole="TINTUC" />
+  </EntityType>
+  <EntityType Name="SUATIN">
+    <Key>
+      <PropertyRef Name="MaSuaTin" />
+    </Key>
+    <Property Name="MaSuaTin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+    <Property Name="ThoiGianSua" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LinkFile" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TAIKHOAN" Relationship="Self.FK_SUATIN_TAIKHOAN" FromRole="SUATIN" ToRole="TAIKHOAN" />
+    <NavigationProperty Name="TINTUC" Relationship="Self.FK_SUATIN_TINTUC" FromRole="SUATIN" ToRole="TINTUC" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LoaiTaiKhoan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DANGTINTUCs" Relationship="Self.FK_DANGTINTUC_TAIKHOAN" FromRole="TAIKHOAN" ToRole="DANGTINTUC" />
+    <NavigationProperty Name="SUATINs" Relationship="Self.FK_SUATIN_TAIKHOAN" FromRole="TAIKHOAN" ToRole="SUATIN" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="MaTheLoai" />
+    </Key>
+    <Property Name="MaTheLoai" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="TenTheLoai" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TINTUCs" Relationship="Self.FK_TINTUC_THELOAI" FromRole="THELOAI" ToRole="TINTUC" />
+  </EntityType>
+  <EntityType Name="TINTUC">
+    <Key>
+      <PropertyRef Name="MaTinTuc" />
+    </Key>
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+    <Property Name="TieuDe" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaTheLoai" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="MaLoaiTin" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LinkFile" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="DANGTINTUCs" Relationship="Self.FK_DANGTINTUC_TINTUC" FromRole="TINTUC" ToRole="DANGTINTUC" />
+    <NavigationProperty Name="DUYETTINs" Relationship="Self.FK_DUYETTIN_TINTUC" FromRole="TINTUC" ToRole="DUYETTIN" />
+    <NavigationProperty Name="HINHs" Relationship="Self.FK_HINH_TINTUC" FromRole="TINTUC" ToRole="HINH" />
+    <NavigationProperty Name="LOAITIN" Relationship="Self.FK_TINTUC_LOAITIN" FromRole="TINTUC" ToRole="LOAITIN" />
+    <NavigationProperty Name="SUATINs" Relationship="Self.FK_SUATIN_TINTUC" FromRole="TINTUC" ToRole="SUATIN" />
+    <NavigationProperty Name="THELOAI" Relationship="Self.FK_TINTUC_THELOAI" FromRole="TINTUC" ToRole="THELOAI" />
+    <NavigationProperty Name="TUKHOAs" Relationship="Self.FK_TUKHOA_TINTUC" FromRole="TINTUC" ToRole="TUKHOA" />
+  </EntityType>
+  <EntityType Name="TUKHOA">
+    <Key>
+      <PropertyRef Name="MaTinTuc" />
+      <PropertyRef Name="TuKhoa1" />
+    </Key>
+    <Property Name="MaTinTuc" Type="Int32" Nullable="false" />
+    <Property Name="TuKhoa1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TINTUC" Relationship="Self.FK_TUKHOA_TINTUC" FromRole="TUKHOA" ToRole="TINTUC" />
+  </EntityType>
+  <Association Name="FK_DANGTINTUC_TAIKHOAN">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="1" />
+    <End Role="DANGTINTUC" Type="Self.DANGTINTUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DANGTINTUC">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DANGTINTUC_TINTUC">
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="1" />
+    <End Role="DANGTINTUC" Type="Self.DANGTINTUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TINTUC">
+        <PropertyRef Name="MaTinTuc" />
+      </Principal>
+      <Dependent Role="DANGTINTUC">
+        <PropertyRef Name="MaTinTuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DUYETTIN_TINTUC">
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="1" />
+    <End Role="DUYETTIN" Type="Self.DUYETTIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TINTUC">
+        <PropertyRef Name="MaTinTuc" />
+      </Principal>
+      <Dependent Role="DUYETTIN">
+        <PropertyRef Name="MaTinTuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HINH_TINTUC">
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="1" />
+    <End Role="HINH" Type="Self.HINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TINTUC">
+        <PropertyRef Name="MaTinTuc" />
+      </Principal>
+      <Dependent Role="HINH">
+        <PropertyRef Name="MaTinTuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TINTUC_LOAITIN">
+    <End Role="LOAITIN" Type="Self.LOAITIN" Multiplicity="1" />
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAITIN">
+        <PropertyRef Name="MaLoaiTin" />
+      </Principal>
+      <Dependent Role="TINTUC">
+        <PropertyRef Name="MaLoaiTin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUATIN_TAIKHOAN">
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="1" />
+    <End Role="SUATIN" Type="Self.SUATIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOAN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SUATIN">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SUATIN_TINTUC">
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="1" />
+    <End Role="SUATIN" Type="Self.SUATIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TINTUC">
+        <PropertyRef Name="MaTinTuc" />
+      </Principal>
+      <Dependent Role="SUATIN">
+        <PropertyRef Name="MaTinTuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TINTUC_THELOAI">
+    <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="1" />
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THELOAI">
+        <PropertyRef Name="MaTheLoai" />
+      </Principal>
+      <Dependent Role="TINTUC">
+        <PropertyRef Name="MaTheLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TUKHOA_TINTUC">
+    <End Role="TINTUC" Type="Self.TINTUC" Multiplicity="1" />
+    <End Role="TUKHOA" Type="Self.TUKHOA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TINTUC">
+        <PropertyRef Name="MaTinTuc" />
+      </Principal>
+      <Dependent Role="TUKHOA">
+        <PropertyRef Name="MaTinTuc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebTinTucEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DANGTINTUCs" EntityType="Self.DANGTINTUC" />
+    <EntitySet Name="DUYETTINs" EntityType="Self.DUYETTIN" />
+    <EntitySet Name="DUYETTINTUCs" EntityType="Self.DUYETTINTUC" />
+    <EntitySet Name="HINHs" EntityType="Self.HINH" />
+    <EntitySet Name="LOAITINs" EntityType="Self.LOAITIN" />
+    <EntitySet Name="SUATINs" EntityType="Self.SUATIN" />
+    <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+    <EntitySet Name="THELOAIs" EntityType="Self.THELOAI" />
+    <EntitySet Name="TINTUCs" EntityType="Self.TINTUC" />
+    <EntitySet Name="TUKHOAs" EntityType="Self.TUKHOA" />
+    <AssociationSet Name="FK_DANGTINTUC_TAIKHOAN" Association="Self.FK_DANGTINTUC_TAIKHOAN">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+      <End Role="DANGTINTUC" EntitySet="DANGTINTUCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DANGTINTUC_TINTUC" Association="Self.FK_DANGTINTUC_TINTUC">
+      <End Role="TINTUC" EntitySet="TINTUCs" />
+      <End Role="DANGTINTUC" EntitySet="DANGTINTUCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DUYETTIN_TINTUC" Association="Self.FK_DUYETTIN_TINTUC">
+      <End Role="TINTUC" EntitySet="TINTUCs" />
+      <End Role="DUYETTIN" EntitySet="DUYETTINs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HINH_TINTUC" Association="Self.FK_HINH_TINTUC">
+      <End Role="TINTUC" EntitySet="TINTUCs" />
+      <End Role="HINH" EntitySet="HINHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TINTUC_LOAITIN" Association="Self.FK_TINTUC_LOAITIN">
+      <End Role="LOAITIN" EntitySet="LOAITINs" />
+      <End Role="TINTUC" EntitySet="TINTUCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUATIN_TAIKHOAN" Association="Self.FK_SUATIN_TAIKHOAN">
+      <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+      <End Role="SUATIN" EntitySet="SUATINs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SUATIN_TINTUC" Association="Self.FK_SUATIN_TINTUC">
+      <End Role="TINTUC" EntitySet="TINTUCs" />
+      <End Role="SUATIN" EntitySet="SUATINs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TINTUC_THELOAI" Association="Self.FK_TINTUC_THELOAI">
+      <End Role="THELOAI" EntitySet="THELOAIs" />
+      <End Role="TINTUC" EntitySet="TINTUCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TUKHOA_TINTUC" Association="Self.FK_TUKHOA_TINTUC">
+      <End Role="TINTUC" EntitySet="TINTUCs" />
+      <End Role="TUKHOA" EntitySet="TUKHOAs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

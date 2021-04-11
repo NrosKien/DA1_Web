@@ -1,0 +1,57 @@
+﻿.full-cover {
+     height: 100vh;
+     min-height: 100vh;
+     background-color: #537895;
+     background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+}
+.full-coverFooter {
+    height: 100vh;
+    min-height: 100vh;
+}
+.box {
+    padding: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #2f4353;
+    background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    border-radius: 12px;
+    display: block;
+}
+.lb{
+    color: #051326;
+    font-weight: 500;
+}
+.txtBox{
+    background: white;
+    color: #051326;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+}
+.txtBox:focus{
+    opacity: 0.9;
+}
+.box input[type=submit]{
+    border: none;
+    background: #647286;
+    text-align: center;
+    width: 100%;
+    outline: none;
+    color: white;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+.box input[type=submit]:hover{
+    background: #223652;
+}
+.lkSignUp{
+    color: #051326; 
+    font-weight: 500;
+    margin-left: 18px;
+}
+.lkSignUp:hover{
+    color: #384a63;
+}
